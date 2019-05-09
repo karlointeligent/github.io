@@ -65,7 +65,7 @@
             console.log(response);
             document.getElementById('status').innerHTML =
               'Witaj,zalogowano jako: ' + response.name + '! Twój email: ' + response.email+response.id ;
-		  document.getElementById('status').innerHTML=`<img src="{response.picture.data.url}">`;
+		  document.getElementById('status').innerHTML='<img src="' + response.picture.data.url+ '">';
 	   
           });
         }
