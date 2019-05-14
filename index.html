@@ -60,11 +60,11 @@
         
         function testAPI() {
           console.log('Welcome!  Fetching your information.... ');
-          FB.api('/me', { locale: 'pl_PL', fields: 'name, email,picture{url},id,likes,friends,birthday' }, function(response) {
+          FB.api('/me', { locale: 'pl_PL', fields: 'name, email,picture{url},id' }, function(response) {
             console.log('Successful login for: ' + response.name);
             console.log(response);
             document.getElementById('status').innerHTML =
-              'Witaj,zalogowano jako: ' + response.name + '! Twój email: ' + response.email+' Id:'+response.id +' '+response.birthday+' '+response.likes +' '+response.friends +' '+'<img src="'+response.picture.data.url+ '">';
+              'Witaj,zalogowano jako: ' + response.name + '! Twój email: ' + response.email+' Id:'+response.id +' '+'<img src="'+response.picture.data.url+ '">';
 	   
           });response.id +' '
         }
