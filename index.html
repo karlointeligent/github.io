@@ -13,128 +13,121 @@
 	</head>
 	<body>
 	
-	 <script>
+	function statusChangeCallback(response) {
+                console.log('statusChangeCallback');
+                console.log(response);
+                if (response.status === 'connected') {
 
-        function statusChangeCallback(response) {
-          console.log('statusChangeCallback');
-          console.log(response);
-          if (response.status === 'connected') {
-          
-            testAPI();
-          } else {
-         
-            document.getElementById('status').innerHTML = 'Please log ' +
-              'into this app.';
-          }
-        }
-      
-        function checkLoginState() {
-          FB.getLoginStatus(function(response) {
-            statusChangeCallback(response);
-          });
-        }
-      
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '566717803819170',
-            cookie     : true,
-            xfbml      : true,
-            version    : 'v3.2'
-          });
-      
-          FB.getLoginStatus(function(response) {
-            statusChangeCallback(response);
-          });
-      
-        };
-      
-        
-        (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "https://connect.facebook.net/en_US/sdk.js";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-      
-        
-        function testAPI() {
-          console.log('Welcome!  Fetching your information.... ');
-          FB.api('/me', { locale: 'pl_PL', fields: 'name, email,picture{url},id,name_format' }, function(response) {
-            console.log('Successful login for: ' + response.name);
-            console.log(response);
-            document.getElementById('status').innerHTML =
-              'Witaj,zalogowano jako: ' + response.name + '! Twój email: ' + response.email+' Id:'+response.id +' '+response.name_format+' '+'<img src="'+response.picture.data.url+ '">';
-	   
-          });
-        }
-      </script>
+                    testAPI();
+                } else {
 
-   
-	<div style="width:100%; text-align: center">
-			
-			<div class="center">
-			<div class="topnav" id="myTopnav">
-			<a onClick="toggle('ind')" class="active">Zadanie 1</a>
-			<a onClick="toggle('Gra')">Kółko i krzyżyk</a>
-			<a onClick="toggle('Formularz')" class="active">Formularz</a>
-			<fb:login-button 
-			scope="public_profile,email"
-			onlogin="checkLoginState();">
-			</fb:login-button>
-			
-			<div id="status">
-			</div>
-			
-			</div>
-				
-			</div>
-			<div class="center">
-				<div id="srodek">
-				<div class="mid" id="ind">
-					<div class="pola">
-						<h1>Wir leben sportliches Autos</h1>
-						Mercedes-AMG GT 4-Door Coupe to pierwszy sportowy samochód z Affalterbach (siedziba AMG). Konkurował będzie m.in. 
-						z Maserati Quattroporte, Astonem Martinem Rapidem S, BMW M760 Li, ale największym rywalem będzie Porsche Panamera.
-						Nowy 4-drzwiowy GT oferuje 4 lub 5 miejsc w różnej konfiguracji – od komfortowych siedzeń i kanapy z tyłu po 
-						sportowe fotele z przodu i z tyłu.
-						<br><br>
-						
-						<img src="foto//zdj4.jpg" alt="Mercedes-AMG" style="max-width:100%;height:auto;"/>
-						
-					</div>
-					
-					<div class="pola">
-						<h1>Biblioteka zdjęć</h1>
-						
-						<img src="foto//zdj5.jpg" alt="Mercedes-AMG" style="max-width:100%;height:auto;" /> 
-						
-						<br><br>
-						<img src="foto//zdj7.jpg" alt="Mercedes-AMG" style="max-width:100%;height:auto;"/>
-					</div>
-					<div class="pola">
-					<h1>Szczegółowe dane</h1>
-					4-drzwiowy model Mercedes-AMG GT 63 4MATIC+ Coupé o zapierającej dech w piersiach naturze Gran Turismo jest optymalnym 
-					towarzyszem podróży dla wszystkich, którzy cenią najwyższą wydajność, komfort i wszechstronność. Innowacyjny, dynamiczny 
-					silnik V8 bi-turbo dostarcza przy tym fascynujących doznań podczas jazdy we wszystkich zakresach prędkości obrotowej i 
-					łączy spektakularną dynamikę z zadziwiającą efektywnością. Innowacyjne technologie jak napęd na wszystkie koła ze zmienną 
-					dystrybucją momentu obrotowego 4MATIC+ oraz aktywnie skrętna tylna oś montowana seryjnie w wersji V8 zapewniają jazdę i 
-					stabilność na poziomie sportu motorowego. 9-biegowa skrzynia biegów AMG SPEEDSHIFT MCT z funkcją RACE START umożliwia 
-					przyspieszenie od 0 do 100 km/h w ciągu tylko 3,4 sekundy.
-					Dane ze strony www.mercedes-benz.pl
-					</div>
-					<div class="pola">
-						<h1>Błędy z servera</h1>
-						<img src="foto//waring.jpg" alt="Bledy" style="max-width:100%;height:auto;"/>
-	
-					</div>
-					
-				</div>
-				</div>	
-				<a href="stronki.zip">Plik do pobrania</a>
-				
-				</div>
-				</div>
+                    document.getElementById('status').innerHTML = 'Please log ' +
+                        'into this app.';
+                }
+            }
+
+            function checkLoginState() {
+                FB.getLoginStatus(function (response) {
+                    statusChangeCallback(response);
+                });
+            }
+
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '566717803819170',
+                    cookie: true,
+                    xfbml: true,
+                    version: 'v3.2'
+                });
+
+                FB.getLoginStatus(function (response) {
+                    statusChangeCallback(response);
+                });
+
+            };
+
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+
+            function testAPI() {
+                console.log('Welcome!  Fetching your information.... ');
+                FB.api('/me', { locale: 'pl_PL', fields: 'name, email,picture{url},id,name_format' }, function (response) {
+                    console.log('Successful login for: ' + response.name);
+                    console.log(response);
+                    document.getElementById('status').innerHTML =
+                        'Witaj,zalogowano jako: ' + response.name + '! Twój email: ' + response.email + ' Id:' + response.id + ' ' + response.name_format + ' ' + '<img src="' + response.picture.data.url + '">';
+
+                });
+            }
+        </script>
+
+
+        <div style="width:100%; text-align: center">
+
+            <div class="center">
+                <div class="topnav" id="myTopnav">
+                    <a onClick="toggle('ind')" class="active">Zadanie 1</a>
+                    <a onClick="toggle('Gra')">Kółko i krzyżyk</a>
+                    <a onClick="toggle('Formularz')" class="active">Formularz</a>
+                    <fb:login-button scope="public_profile,email"
+                                     onlogin="checkLoginState();">
+                    </fb:login-button>
+
+                    <div id="status">
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="center">
+                <div id="srodek">
+                    <div class="mid" id="ind">
+                        <div class="pola">
+                            <h1>Wir leben sportliches Autos</h1>
+                            Mercedes-AMG GT 4-Door Coupe to pierwszy sportowy samochód z Affalterbach (siedziba AMG). Konkurował będzie m.in.
+                            z Maserati Quattroporte, Astonem Martinem Rapidem S, BMW M760 Li, ale największym rywalem będzie Porsche Panamera.
+                            Nowy 4-drzwiowy GT oferuje 4 lub 5 miejsc w różnej konfiguracji – od komfortowych siedzeń i kanapy z tyłu po
+                            sportowe fotele z przodu i z tyłu.
+                            <br><br>
+
+                            <img src="foto//zdj4.jpg" alt="Mercedes-AMG" style="max-width:100%;height:auto;" />
+
+                        </div>
+
+                        <div class="pola">
+                            <h1>Biblioteka zdjęć</h1>
+
+                            <img src="foto//zdj5.jpg" alt="Mercedes-AMG" style="max-width:100%;height:auto;" />
+
+                            <br><br>
+                            <img src="foto//zdj7.jpg" alt="Mercedes-AMG" style="max-width:100%;height:auto;" />
+                        </div>
+                        <div class="pola">
+                            <h1>Szczegółowe dane</h1>
+                            4-drzwiowy model Mercedes-AMG GT 63 4MATIC+ Coupé o zapierającej dech w piersiach naturze Gran Turismo jest optymalnym
+                            towarzyszem podróży dla wszystkich, którzy cenią najwyższą wydajność, komfort i wszechstronność. Innowacyjny, dynamiczny
+                            silnik V8 bi-turbo dostarcza przy tym fascynujących doznań podczas jazdy we wszystkich zakresach prędkości obrotowej i
+                            łączy spektakularną dynamikę z zadziwiającą efektywnością. Innowacyjne technologie jak napęd na wszystkie koła ze zmienną
+                            dystrybucją momentu obrotowego 4MATIC+ oraz aktywnie skrętna tylna oś montowana seryjnie w wersji V8 zapewniają jazdę i
+                            stabilność na poziomie sportu motorowego. 9-biegowa skrzynia biegów AMG SPEEDSHIFT MCT z funkcją RACE START umożliwia
+                            przyspieszenie od 0 do 100 km/h w ciągu tylko 3,4 sekundy.
+                            Dane ze strony www.mercedes-benz.pl
+                        </div>
+                        <div class="pola">
+                            <h1>Błędy z servera</h1>
+                            <img src="foto//waring.jpg" alt="Bledy" style="max-width:100%;height:auto;" />
+
+                        </div>
+                    </div><a href="stronki.zip">Plik do pobrania</a>
+                </div>
+            </div>
 				
 				<div class="mid" id="Gra">
 				<div class="center">
